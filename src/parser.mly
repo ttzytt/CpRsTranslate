@@ -20,23 +20,23 @@
 
 /* Top level rule */
 %start toplevel
-%type <Syntax.expression> toplevel
+%type <Syntax.expr> toplevel
 
 %%
 
 /* Grammar */
 
 toplevel:
-    | e = expression NEWLINE { e }
-    | e = expression EOF { e }
+    | e = expr NEWLINE { e }
+    | e = expr EOF { e }
 ;
 
-expression:
+expr:
   | n = NUMERAL                             { Syntax.Numeral n }
-  | e1 = expression TIMES  e2 = expression  { Syntax.Times (e1, e2) }
-  | e1 = expression PLUS   e2 = expression  { Syntax.Plus (e1, e2) }
-  | e1 = expression MINUS  e2 = expression  { Syntax.Minus (e1, e2) }
-  | e1 = expression DIVIDE e2 = expression  { Syntax.Divide (e1, e2) }
-  | MINUS e = expression %prec UMINUS       { Syntax.Negate e }
-  | LPAREN e = expression RPAREN            { e }
+  | e1 = expr TIMES  e2 = expr  { Syntax.Times (e1, e2) }
+  | e1 = expr PLUS   e2 = expr  { Syntax.Plus (e1, e2) }
+  | e1 = expr MINUS  e2 = expr  { Syntax.Minus (e1, e2) }
+  | e1 = expr DIVIDE e2 = expr  { Syntax.Divide (e1, e2) }
+  | MINUS e = expr %prec UMINUS       { Syntax.Negate e }
+  | LPAREN e = expr RPAREN            { e }
 ;

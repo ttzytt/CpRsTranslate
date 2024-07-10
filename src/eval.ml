@@ -1,6 +1,6 @@
-(** Evaluation of expressions, given as big step semantics. *)
+(** Evaluation of exprs, given as big step semantics. *)
 
-(** [eval e] evaluates the expression [e] to an integer. It raises an
+(** [eval e] evaluates the expr [e] to an integer. It raises an
     exception if division by zero occurs. *)
 let rec eval = function
   | Syntax.Numeral n -> n

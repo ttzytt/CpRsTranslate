@@ -1,16 +1,17 @@
 (** Abstract syntax. *)
 
-(** Arithmetical expressions. *)
-type expression =
+(** Arithmetical exprs. *)
+type expr =
   | Numeral of int (** non-negative integer constant *)
-  | Plus of expression * expression  (** Addition [e1 + e2] *)
-  | Minus of expression * expression (** Difference [e1 - e2] *)
-  | Times of expression * expression (** Product [e1 * e2] *)
-  | Divide of expression * expression (** Quotient [e1 / e2] *)
-  | Negate of expression (** Opposite value [-e] *)
+  | Plus of expr * expr  (** Addition [e1 + e2] *)
+  | Minus of expr * expr (** Difference [e1 - e2] *)
+  | Times of expr * expr (** Product [e1 * e2] *)
+  | Divide of expr * expr (** Quotient [e1 / e2] *)
+  | Negate of expr (** Opposite value [-e] *)
+
 
 (** Conversion of expresions to strings. *)
-let string_of_expression e =
+let string_of_expr e =
   let rec to_str n e =
     let (m, str) = match e with
 	Numeral n       ->    (3, string_of_int n)

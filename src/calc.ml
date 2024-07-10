@@ -4,11 +4,11 @@ let main () =
   in
   let lexbuf = Lexing.from_channel istream in
   try
-    while true do
+    while not lexbuf.lex_eof_reached do
       try
         let result_ast = Parser.toplevel Lexer.lexeme lexbuf in
         let result_val = Eval.eval result_ast in
-        print_endline (Syntax.string_of_expression result_ast ^ " = " ^ string_of_int result_val);
+        print_endline (Syntax.string_of_expr result_ast ^ " = " ^ string_of_int result_val);
       with
       | Parser.Error -> print_endline "parser err"; exit 1
     done
