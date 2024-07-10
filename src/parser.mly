@@ -27,8 +27,7 @@
 /* Grammar */
 
 toplevel:
-    | e = expr NEWLINE { e }
-    | e = expr EOF { e }
+    | es = exprs EOF { es }
 ;
 
 expr:

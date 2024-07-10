@@ -11,3 +11,5 @@ let rec eval = function
       let n2 = eval e2 in
 	if n2 <> 0 then eval e1 / n2 else raise Division_by_zero
   | Syntax.Negate e -> - (eval e)
+
+let eval_exprs = List.map eval

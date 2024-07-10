@@ -10,6 +10,7 @@ type expr =
   | Negate of expr (** Opposite value [-e] *)
 
 
+type exprs = expr list
 (** Conversion of expresions to strings. *)
 let string_of_expr e =
   let rec to_str n e =
@@ -23,4 +24,8 @@ let string_of_expr e =
     in
       if m < n then "(" ^ str ^ ")" else str
   in
-    to_str (-1) e
+    to_str (-1) e;;
+
+(** Conversion of expresions to strings. *)
+
+let string_of_exprs es = String.concat "\n" (List.map string_of_expr es)
