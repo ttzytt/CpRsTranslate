@@ -8,7 +8,7 @@ let main () =
   let lexbuf = Lexing.from_channel istream in
   let result_exprs = Parser.toplevel Lexer.lexeme lexbuf in
   let result_vals = Eval.eval_exprs result_exprs in
-  List.map print_expr_and_vals (List.combine result_vals result_exprs)
+  List.iter print_expr_and_vals (List.combine result_vals result_exprs)
 ;;
 
 
